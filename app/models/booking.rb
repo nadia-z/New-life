@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
-  belongs_to :lives
-  belongs_to :users
+  belongs_to :user
+  belongs_to :life
 end
