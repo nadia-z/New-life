@@ -13,7 +13,7 @@ class LivesController < ApplicationController
   end
 
   def edit
-    #@life = Life.find(params[:id])
+    @life = Life.find(params[:id])
   end
 
   def update
@@ -21,7 +21,7 @@ class LivesController < ApplicationController
   end
 
   def destroy
-    life = Life.find(params[:id])
+    @life = Life.find(params[:id])
     life.destroy
   end
 

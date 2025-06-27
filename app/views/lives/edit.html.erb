@@ -8,37 +8,39 @@
 <div class="container border">
 
   <form class="" action="<%= life_path(1)%>" method="patch">
-    <div>
-    <label for="title">title<label>
-    <textarea name="title" style="width:200; height:50px;" >
-      <%= title = "title"%>
-    </textarea>
+    <div class="row">
+
+    <div class="col-5 mb-3">
+      <label class="form-label" for="title">title:</label>
+      <textarea class="form-control" name="title">
+        <%= title = "title"%>
+      </textarea>
     </div>
 
-    <div>
-    <label for="description">description<label>
-    <textarea name="description" style="width:400px" >
+    <div class="col-5 mb-3">
+    <label class="form-label" for="description">description:</label>
+    <textarea class="form-control" name="description">
       <%= life_desc = "life description in here waiting to be edited"%>
     </textarea>
     </div>
 
-    <div>
-    <label for="address">address<label>
-    <textarea name="address" style="width:300; height:50px;" >
+    <div class="col-5 mb-3">
+    <label class="form-label" for="address">address:</label>
+    <textarea class="form-control" name="address" style="width:300; height:50px;" >
       <%= address = "address"%>
     </textarea><!-- fill in for  --->
     </div>
 
-    <div>
-    <label for="price_per_day">price per day</label>
-    <input type="int" name="price_per_day"/>
+    <div class="col-5 mb-3">
+    <label class="form-label" for="price_per_day">price per day</label>
+    <input class="form-control" type="number" name="price_per_day" min="0"/>
     </div>
 
     <div>
-      <label for="status">status</label>
-      <select name="status"></select>
+      <label class="form-label" for="status">status</label>
+      <select class="form-select" name="status"></select>
     </div>
-
+    </div>
     <input class="btn btn-primary" type="submit" value="submit"/>
   </form>
 </div>
