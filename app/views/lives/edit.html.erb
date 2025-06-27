@@ -1,0 +1,51 @@
+<h1>Lives#edit</h1>
+<p>Find me in app/views/lives/edit.html.erb</p>
+
+<%= life = "life title goes here"%>
+
+
+
+<div class="container border">
+
+  <form class="pb-3" action="<%= life_path(params[:id])%>" method="patch"> <!-- form for editing life instance (lives#update)-->
+    <div class="row justify-content-evenly">
+
+    <div class="col-5 mb-3">
+      <label class="form-label" for="title">title:</label>
+      <textarea class="form-control" name="title" style="height:200px;">
+        <%= @life.title%>
+      </textarea>
+    </div>
+
+    <div class="col-5 mb-3">
+    <label class="form-label" for="description">description:</label>
+    <textarea class="form-control" name="description" style="height:200px;">
+      <%= @life.description%>
+    </textarea>
+    </div>
+
+    <div class="col-6 mb-3">
+    <label class="form-label" for="address">address:</label>
+    <textarea class="form-control" name="address" style="width:300; height:50px;" >
+      <%= @life.address%>
+    </textarea>
+    </div>
+
+    <div class="col-4 mb-3">
+    <label class="form-label" for="price_per_day">price per day</label>
+    <input class="form-control" value="<%= @life.price_per_day%>" type="number" step="0.01" name="price_per_day" min="0"/>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="status">status</label>
+      <select class="form-select" name="status">
+        <option selected value="<%= @life.status%>"></option>
+      </select>
+    </div>
+
+
+    <!-- todo add image section-->
+    </div>
+    <input class="btn btn-primary" type="submit" value="submit"/>
+  </form>
+</div>

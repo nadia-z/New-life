@@ -11,6 +11,7 @@
 # Create users and lives first
 lives = []
 
+#eitan i have trimed down the migrations to only what was needed for seeding
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
