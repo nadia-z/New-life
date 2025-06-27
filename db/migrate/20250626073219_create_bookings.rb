@@ -5,6 +5,7 @@ class CreateBookings < ActiveRecord::Migration[7.1]
       t.date :end_date
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :life, null: false, foreign_key: true
+      t.float :total_price
 
       t.timestamps
     end
