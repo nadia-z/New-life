@@ -16,6 +16,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'c617fdd82d8d3b53b6f170a30d0e412a4b9df6fc79acff5169d7a888f74934e67c63aad952c7a6ef12cdcc5ca4fffdd8cd04f4314e827068b74841d87734fbb9'
 
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -24,7 +25,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+  config.mailer_sender = 'New-Life@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -127,6 +129,7 @@ Devise.setup do |config|
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '6fdac01157cd95556595d16cba2334e200432f04bd988295bd4367ffb81c2a0a26c302b24d6fa3cc857fb5f102cab8f160b6687469b3b4a40ca31096ca40a1d8'
+
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

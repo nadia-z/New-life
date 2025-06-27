@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 ruby "3.3.5"
+#added gems
+gem "devise"
 
 gem "devise"
 
