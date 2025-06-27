@@ -1,0 +1,44 @@
+<h1>Lives#edit</h1>
+<p>Find me in app/views/lives/edit.html.erb</p>
+
+<%= life = "life title goes here"%>
+
+
+
+<div class="container border">
+
+  <form class="" action="<%= life_path(1)%>" method="patch">
+    <div>
+    <label for="title">title<label>
+    <textarea name="title" style="width:200; height:50px;" >
+      <%= title = "title"%>
+    </textarea>
+    </div>
+
+    <div>
+    <label for="description">description<label>
+    <textarea name="description" style="width:400px" >
+      <%= life_desc = "life description in here waiting to be edited"%>
+    </textarea>
+    </div>
+
+    <div>
+    <label for="address">address<label>
+    <textarea name="address" style="width:300; height:50px;" >
+      <%= address = "address"%>
+    </textarea><!-- fill in for  --->
+    </div>
+
+    <div>
+    <label for="price_per_day">price per day</label>
+    <input type="int" name="price_per_day"/>
+    </div>
+
+    <div>
+      <label for="status">status</label>
+      <select name="status"></select>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="submit"/>
+  </form>
+</div>
