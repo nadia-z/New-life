@@ -1,58 +1,113 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 
-# Create users and lives first
+puts "Cleaning database..."
+Booking.destroy_all
+Life.destroy_all
+User.destroy_all
+
+job_titles = ["Mother", "Lawyer", "Fireman", "Police officer", "Teacher", "Artist", "Father", "Surgeon", "Prime minister", "Dog walker"]
+
+puts "Creating users..."
 lives = []
 
-#eitan i have trimed down the migrations to only what was needed for seeding
-10.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  domain_names = ['@gmail.com', '@hotmail.com', '@yahoo.com', '@icloud.com']
+users = [{
+    first_name: "jesse",
+    last_name: "mayert",
+    email: "jesse.mayert@gmail.com",
+    password: "password123",
+    is_host: false},
+  {
+    first_name: "terrance",
+    last_name: "hessel",
+    email: "terrance.hessel@gmail.com",
+    password: "password123",
+    is_host: false},
+  {
+    first_name: "lauren",
+    last_name: "rau",
+    email: "lauren.rau@hotmail.com",
+    password: "password123",
+    is_host: false},
+  {
+    first_name: "kraig",
+    last_name: "bechtelar",
+    email: "kraig.bechtelar@hotmail.com",
+    password: "password123",
+    is_host: false},
+  {
+    first_name: "ahmad",
+    last_name: "feest",
+    email: "ahmad.feest@yahoo.com",
+    password: "password123",
+    is_host: true},
+  {
+    first_name: "clair",
+    last_name: "feeney",
+    email: "clair.feeney@gmail.com",
+    password: "password123",
+    is_host: true},
+  {
+    first_name: "kazuko",
+    last_name: "emmerich",
+    email: "kazuko.emmerich@yahoo.com",
+    password: "password123",
+    is_host: true},
+  {
+    first_name: "lewis",
+    last_name: "ledner",
+    email: "lewis.ledner@yahoo.com",
+    password: "password123",
+    is_host: true},
+  {
+    first_name: "melani",
+    last_name: "zboncak",
+    email: "melani.zboncak@yahoo.com",
+    password: "password123",
+    is_host: false},
+  {
+    first_name: "tracey",
+    last_name: "macgyver",
+    email: "tracey.macgyver@yahoo.com",
+    password: "password123",
+    is_host: false},
+  ]
+
+users.each do |user|
+  User.create!(user)
+end
+
+puts "Creating lives..."
+host_users = User.where(is_host: true).to_a
+
+10.times do |count|
   price_per_day = Faker::Commerce.price(range: 50.0..500.0)
 
-  user = User.create!({
-    first_name: first_name,
-    last_name: last_name,
-    email: "#{first_name.downcase}.#{last_name.downcase}#{domain_names.sample}",
-    password: "password123",
-    is_host: [true, false].sample
-  })
-
   life = Life.create!({
-    title: Faker::Job.title,
+    title: job_titles[count],
     description: Faker::Lorem.paragraph(sentence_count: 3),
     address: Faker::Address.full_address,
     price_per_day: price_per_day,
-    status: ["Available", "Booked", "Unavailable"].sample,
-    user_id: User.where(is_host: true).sample&.id || user.id,
+    status: "Available",
+    user_id: host_users[count % host_users.length].id,
   })
 
   lives << life
 end
 
-# Create bookings after all users are created
-non_host_users = User.where(is_host: false)
+puts "Creating bookings..."
+non_host_users = User.where(is_host: false).to_a
 
-lives.each do |life|
-  # Create 1 booking for each life
-  booking_length = rand(1..14)  # Number of days as integer
+lives.each_with_index do |life, index|
+  booking_length = rand(1..14)
   start_date = Faker::Date.between(from: 1.month.from_now, to: 6.months.from_now)
   end_date = start_date + booking_length.days
 
   Booking.create!({
     start_date: start_date,
     end_date: end_date,
-    user_id: non_host_users.sample.id,
+    user_id: non_host_users[index % non_host_users.length].id,
     life_id: life.id,
     total_price: life.price_per_day * booking_length
   })
-
 end
+
+puts "Seed completed! Created #{User.count} users, #{Life.count} lives, and #{Booking.count} bookings."
