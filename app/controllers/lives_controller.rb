@@ -1,5 +1,8 @@
 class LivesController < ApplicationController
+  before_action :is_host?, only: [:new, :create, :edit, :update, :destroy]
+
   def index
+    @lives = Life.where(user_id: current_user.id)
   end
 
   def show
@@ -7,9 +10,17 @@ class LivesController < ApplicationController
   end
 
   def new
+    @life = Life.new()
   end
 
   def create
+    @life = Life.new(life_params)
+    @life.user = current_user
+    if @life.save
+      redirect_to life_path(@life)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -38,6 +49,13 @@ class LivesController < ApplicationController
 
   private
 
+  def life_params
+    params.require(:life).permit(:title, :description, :address, :price_per_day, :status)
+  end
+
+  def is_host?
+    current_user.is_host
+  end
 
 
 end
