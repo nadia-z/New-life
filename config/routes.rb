@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'messages/new'
+  get 'messages/create'
+  get 'reviews/new'
+  get 'reviews/create'
   devise_for :users
   root to: "pages#home"
   resources :lives
