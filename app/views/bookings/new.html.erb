@@ -1,0 +1,13 @@
+<h1>Booking details</h1>
+
+<div class="page-wrapper">
+  <div class="card form-container">
+    <%= simple_form_for([@life, @booking]) do |f| %>
+	    <%= f.input :start_date, as: :date %>
+      <%= f.input :end_date, as: :date %>
+      <div class="d-flex justify-content-between">
+        <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
+      </div>
+    <% end %>
+  </div>
+</div>

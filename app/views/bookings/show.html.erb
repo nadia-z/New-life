@@ -1,0 +1,15 @@
+<h1><%= @booking.life.title %> </h1>
+
+<div class="card life-card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= @life.title %></h5>
+    <p class="card-text"><%= @life.description %></p>
+    <p class="card-text">Starting: <%= @booking.start_date %></p>
+    <p class="card-text">Ending: <%= @booking.end_date %></p>
+    <p class="card-text">Total price: <%= "€ #{@booking.total_price}" %></p>
+    <div class="btn-container">
+
+    </div>
+  </div>
+</div>

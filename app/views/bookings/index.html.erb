@@ -1,0 +1,19 @@
+<h1>Your bookings</h1>
+<div class="card-container">
+  <% @bookings.each do |booking| %>
+
+    <div class="card life-card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= booking.life.title %></h5>
+        <p class="card-text"><%= booking.life.description %></p>
+        <p class="card-text">Starting: <%= booking.start_date %></p>
+        <p class="card-text">Ending: <%= booking.end_date %></p>
+        <p class="card-text">Total price: <%= "€ #{booking.total_price}" %></p>
+        <div class="btn-container">
+          <div class="btn btn-warning" style="border-radius: 8px; width: 30"><%= link_to "Edit booking", edit_life_booking_path(booking.life, booking), style:"color: white; text-decoration: none;" %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
