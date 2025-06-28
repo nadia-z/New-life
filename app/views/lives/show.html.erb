@@ -1,6 +1,14 @@
-<h1>Lives#show</h1>
-<p>Find me in app/views/lives/show.html.erb</p>
-<p>title: <%= @life.title%></p>
-<p>description: <%= @life.description%></p>
-<p>price_per_day: <%= @life.price_per_day%></p>
-<p>status: <%= @life.status%></p>
+<h1><%= @life.title %> </h1>
+
+<div class="card life-card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= @life.title %></h5>
+    <p class="card-text"><%= @life.description %></p>
+    <p class="card-text"><%= "€ #{@life.price_per_day}" %></p>
+    <p class="card-text">Status: <%= @life.status %></p>
+    <div class="btn-container">
+      <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(@life), style:"color: white; text-decoration: none;" %></div>
+    </div>
+  </div>
+</div>

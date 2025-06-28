@@ -2,7 +2,7 @@ class LivesController < ApplicationController
   before_action :is_host?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @lives = Life.all
+    @lives = Life.where(user_id: current_user.id)
   end
 
   def show
@@ -17,7 +17,7 @@ class LivesController < ApplicationController
     @life = Life.new(life_params)
     @life.user = current_user
     if @life.save
-      redirect_to life_path(@life), notice: 'Life was successfully created.'
+      redirect_to life_path(@life)
     else
       render :new, status: :unprocessable_entity
     end

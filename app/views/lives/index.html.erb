@@ -1,2 +1,26 @@
-<h1>Lives#index</h1>
-<p>Find me in app/views/lives/index.html.erb</p>
+<h1>A list of your lives</h1>
+
+<div class="card-container">
+  <% @lives.each do |life| %>
+
+  <div class="card life-card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= life.title %></h5>
+      <p class="card-text"><%= life.description %></p>
+      <div class="btn-container">
+        <div class="btn btn-primary">
+          <%= link_to "Show life", life_path(life), style:"color: white; text-decoration: none; border-radius: 5px;"%>
+        </div>
+        <div class="btn btn-warning">
+          <%= link_to "Edit life", edit_life_path(life), style:"color: white; text-decoration: none; border-radius: 5px;" %>
+        </div>
+        <div class="btn btn-danger">
+          <%= link_to "Delete life", life_path(life), method: :delete, style:"color: white; text-decoration: none; border-radius: 5px;", data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+</div>
