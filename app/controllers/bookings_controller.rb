@@ -13,7 +13,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @life = Life.find(params[:life_id])
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     @booking.life_id = @life.id
