@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+ before_action :set_life
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
   def index
     @bookings = Booking.where(user_id: current_user.id)
   end
