@@ -14,7 +14,9 @@
       <div class="btn-container">
         <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(life), style:"color: white; text-decoration: none;" %></div>
         <% if life.status == "Available" %>
-          <div class="btn btn-success" style="border-radius: 8px; width: 30"><%= link_to "Book experience", "lives/#{life.id}/bookings/new", style:"color: white; text-decoration: none;" %></div>
+          <%= link_to "Book experience", new_life_booking_path(life),
+            class: "btn btn-success",
+            style: "border-radius: 8px; width: 150px; color: white; text-decoration: none;" %>
         <% else %>
           <div></div>
         <% end %>
