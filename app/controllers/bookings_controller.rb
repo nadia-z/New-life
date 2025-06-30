@@ -30,7 +30,6 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @life = Life.find(params[:life_id])
     @booking = Booking.find(params[:id])
   end
 
