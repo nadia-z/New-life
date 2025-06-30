@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @life = Life.find(params[:life_id])
     @booking = Booking.find(params[:id])
   end
 
