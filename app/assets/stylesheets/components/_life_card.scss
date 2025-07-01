@@ -1,6 +1,8 @@
 @import "../variables";
 $colors: $yellow,$light-green, $purple,$light-blue, $blue, $light-gray,$red, $gray, $light-pink;
-
+.card-text {
+  color: $black;
+}
 
 .card-link {
   display: inline-block;
@@ -8,21 +10,22 @@ $colors: $yellow,$light-green, $purple,$light-blue, $blue, $light-gray,$red, $gr
   color: inherit;
   width: fit-content;
   margin: 0.2rem;
-
-  .life-card {
-    width: 16rem;
-    border-radius: 8px;
-    cursor: pointer;
-  }
 }
 
-@for $i from 1 through 20 {
-  $color-index: ($i % length($colors));
-  @if $color-index == 0 {
-    $color-index: length($colors);
-  }
+.life-card {
+  width: 16rem;
+  border-radius: 8px;
+  cursor: pointer;
 
-  .card-link:nth-child(#{$i}) .life-card {
-    background: nth($colors, $color-index);
+  // Apply the background color cycling here
+  @for $i from 1 through 20 {
+    $color-index: ($i % length($colors));
+    @if $color-index == 0 {
+      $color-index: length($colors);
+    }
+
+    &:nth-child(#{$i}) {
+      background: nth($colors, $color-index);
+    }
   }
 }

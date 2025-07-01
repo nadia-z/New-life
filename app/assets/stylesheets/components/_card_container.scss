@@ -6,14 +6,16 @@
   padding: 1rem;
   align-items: flex-start;
   justify-content: center;
-  max-width: 1600px; /* Adjust based on your card width */
-  margin: 0 auto; /* Centers the entire container on the page */
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 0.2rem;
 }
 
 .card-container .card {
   display: flex;
   flex-direction: column;
-  height: 400px; /* Set a fixed height for consistent card sizing */
+  min-height: 400px;
+  height: auto;
 }
 
 .card-container .card-body {
