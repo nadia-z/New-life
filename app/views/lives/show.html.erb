@@ -1,14 +1,25 @@
-<h1><%= @life.title %> </h1>
+<div class="two-columns">
+  <div>
+    <h1><%= @life.title %></h1>
+    <br>
+    <div class="lives-show">
+      <%= image_tag 'Moritz_von_Nassau.png', class: 'm-5', alt: 'image' %>
+      <p><%= @life.description_long %></p>
+      <p><%= "€ #{@life.price_per_day}" %></p>
+      <p>Status: <%= @life.status %></p>
+    </div>
+  </div>
 
-<div class="card life-card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= @life.title %></h5>
-    <p class="card-text"><%= @life.description %></p>
-    <p class="card-text"><%= "€ #{@life.price_per_day}" %></p>
-    <p class="card-text">Status: <%= @life.status %></p>
-    <div class="btn-container">
-      <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(@life), style:"color: white; text-decoration: none;" %></div>
+  <div>
+    <h3 class="lives-show">Want to explore this life?</h3>
+    <div class="booking-form">
+      <%= simple_form_for([@life, @booking]) do |f| %>
+        <%= f.input :start_date, as: :date %>
+        <%= f.input :end_date, as: :date %>
+        <div class="d-flex justify-content-between">
+          <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

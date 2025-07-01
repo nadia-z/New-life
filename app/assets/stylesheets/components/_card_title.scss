@@ -1,0 +1,17 @@
+.card-title {
+  font-family: $headers-font;
+  color: $black;
+
+  &--main {
+    font-weight: 700;
+    margin-bottom: 0rem;
+  }
+
+  &--sub {
+    font-weight: 400;
+  }
+
+  &.card-title--main {
+    margin-bottom: 0rem; // THIS will override Bootstrap
+  }
+}
