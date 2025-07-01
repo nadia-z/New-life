@@ -10,13 +10,20 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-      <%= render "shared/navbar" %>
-      <%= render "shared/flashes" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+  <body class="d-flex flex-column min-vh-100">
+    <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class="navbar-container flex-shrink-0">
+      <%= render "shared/navbar" %>
+    </div>
+
+    <div class="central-container flex-grow-1">
+      <%= yield %>
+    </div>
+
+    <div class="footer-container flex-shrink-0">
+      <%= render "shared/footer" %>
+    </div>
   </body>
 
 </html>

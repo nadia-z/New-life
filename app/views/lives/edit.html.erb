@@ -1,0 +1,19 @@
+<h1>Edit "<%= @life.title %>"</h1>
+
+<div class="page-wrapper">
+  <div class="card form-container">
+    <%= simple_form_for(@life) do |f| %>
+	    <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%= f.input :price_per_day %>
+      <%= f.input :status %>
+      <div class="d-flex justify-content-between">
+        <%= f.submit "Update Life", class: "btn btn-primary" %>
+        <%= link_to "Delete Life", life_path(@life), method: :delete,
+            class: "btn btn-danger",
+            data: { confirm: "Are you sure you want to delete this life?" } %>
+      </div>
+    <% end %>
+  </div>
+</div>
