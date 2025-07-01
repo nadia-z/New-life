@@ -1,0 +1,28 @@
+@import "../variables";
+$colors: $yellow,$light-green, $purple,$light-blue, $blue, $light-gray,$red, $gray, $light-pink;
+
+
+.card-link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+  margin: 0.2rem;
+
+  .life-card {
+    width: 16rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+@for $i from 1 through 20 {
+  $color-index: ($i % length($colors));
+  @if $color-index == 0 {
+    $color-index: length($colors);
+  }
+
+  .card-link:nth-child(#{$i}) .life-card {
+    background: nth($colors, $color-index);
+  }
+}

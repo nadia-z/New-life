@@ -1,0 +1,23 @@
+.card-container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1600px; /* Adjust based on your card width */
+  margin: 0 auto; /* Centers the entire container on the page */
+}
+
+.card-container .card {
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Set a fixed height for consistent card sizing */
+}
+
+.card-container .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

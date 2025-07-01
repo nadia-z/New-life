@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="main-header mb-5">
+  <h1>Ever wondered what it's like to live someone else's life?
+  <h1>Experience it for one day.</h1>
+
+  <%= form_tag "/search", method: :get, class: "d-flex mb-4 justify-content-center mt-3" do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Search for a life...", class: "form-control-lg me-2" %>
+    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
+
+<div class="card-container">
+  <% @lives.each do |life| %>
+    <%= link_to life_path(life), class: "card-link", style: "text-decoration: none; color: inherit;" do %>
+    <div class="card life-card" style="width: 18rem;">
+      <%= image_tag 'Moritz_von_Nassau.png', class: 'card-img-top', alt: 'Card image cap' %>
+      <div class="card-body">
+        <h5 class="card-title card-title--main"><%= life.title %></h5>
+        <h5 class="card-title card-title--sub">Short Subtitle</h5>
+        <%# <p class="card-text"><%= life.description </p>%>
+        <p class="card-text"><%= "€ #{life.price_per_day} per day" %></p>
+        <%# <p class="card-text">Status: <%= life.status </p> %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>
