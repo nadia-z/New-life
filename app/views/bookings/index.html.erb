@@ -1,6 +1,6 @@
 <h1 class="mb-5">Looking forward to your next experience? These are your bookings</h1>
 
-<div class="seven-columns">
+<div class="six-columns">
   <!-- Header row -->
   <p></p> <!-- for image column -->
   <h5>Title</h5>
@@ -8,7 +8,6 @@
   <h5>End date</h5>
   <h5>Total price</h5>
   <p></p> <!-- for edit button -->
-  <p></p> <!-- for delete button -->
 
   <% @bookings.each do |booking| %>
     <%= image_tag 'Moritz_von_Nassau.png', alt: 'image', width: '100' %>
@@ -16,7 +15,6 @@
     <p><%= booking.start_date %></p>
     <p><%= booking.end_date %></p>
     <p><%= "€ #{booking.total_price}" %></p>
-    <%= link_to "Edit", edit_life_booking_path(booking.life, booking), class: "btn btn-primary" %>
-    <%= link_to "Delete", life_booking_path(booking.life, booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <%= link_to "Show Booking", life_booking_path(booking.life, booking), class: "btn btn-primary mt-5" %>
   <% end %>
 </div>

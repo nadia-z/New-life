@@ -13,3 +13,10 @@
 .edit-form {
   width: 50%;
 }
+
+.form-container form input,
+.form-container form textarea,
+.form-control form text,
+.form-container form select {
+  color: $black;
+}

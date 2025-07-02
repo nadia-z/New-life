@@ -7,6 +7,9 @@
       <p><%= @life.description_long %></p>
       <p><%= "€ #{@life.price_per_day}" %></p>
       <p>Status: <%= @life.status %></p>
+       <% if current_user&.is_host %>
+        <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
+      <% end %>
     </div>
   </div>
 
