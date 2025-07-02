@@ -1,28 +1,15 @@
-<h1>Choose between a list of new lives</h1>
+<div class="main-header mb-5">
+  <h1>Ever wondered what it's like to live someone else's life?
+  <h1>Experience it for one day.</h1>
 
+  <%= form_tag "/search", method: :get, class: "d-flex mb-4 justify-content-center mt-3" do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Search for a life...", class: "form-control-lg me-2" %>
+    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
 
 <div class="card-container">
   <% @lives.each do |life| %>
-
-  <div class="card life-card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"><%= life.title %></h5>
-      <p class="card-text"><%= life.description %></p>
-      <p class="card-text"><%= "€ #{life.price_per_day}" %></p>
-      <p class="card-text">Status: <%= life.status %></p>
-      <div class="btn-container">
-        <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(life), style:"color: white; text-decoration: none;" %></div>
-        <% if life.status == "Available" %>
-          <%= link_to "Book experience", new_life_booking_path(life),
-            class: "btn btn-success",
-            style: "border-radius: 8px; width: 150px; color: white; text-decoration: none;" %>
-        <% else %>
-          <div></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
+   <%= render "shared/life_card", life: life %>
   <% end %>
 </div>

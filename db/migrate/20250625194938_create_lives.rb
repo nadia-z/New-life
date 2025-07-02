@@ -5,7 +5,6 @@ class CreateLives < ActiveRecord::Migration[7.1]
       t.string :description
       t.string :address
       t.float :price_per_day
-      t.string :category
       t.string :status
       t.references :user, null: false, foreign_key: true
 

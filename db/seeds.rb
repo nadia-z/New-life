@@ -83,7 +83,8 @@ host_users = User.where(is_host: true).to_a
 
   life = Life.create!({
     title: job_titles[count],
-    description: Faker::Lorem.paragraph(sentence_count: 3),
+    description_short: Faker::Lorem.paragraph(sentence_count: 1),
+    description_long: Faker::Lorem.paragraph(sentence_count: 4),
     address: Faker::Address.full_address,
     price_per_day: price_per_day,
     status: "Available",
