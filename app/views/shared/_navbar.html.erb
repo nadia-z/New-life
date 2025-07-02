@@ -26,6 +26,7 @@
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <% if current_user.is_host %>
+                <%= link_to "Your details", users_show_path, class: "dropdown-item" %>
                 <%= link_to "Your lives", lives_path, class: "dropdown-item" %>
                 <%= link_to "Create Life", new_life_path, class: "dropdown-item" %>
                 <%= link_to "Your bookings", life_bookings_path(current_user.bookings), class: "dropdown-item" %>

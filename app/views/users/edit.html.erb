@@ -3,7 +3,7 @@
 <div class="page-wrapper">
 
   <div class="form-container">
-    <%= simple_form_for(edit_profile_settings_path) do |f| %>
+    <%= simple_form_for(current_user) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
 
@@ -15,7 +15,6 @@
       <% end %>
 
       <%= f.input :first_name %>
-      <%= f.input :last_name %>
       <%= f.input :password,
                   label: "New password",
                   hint: "leave it blank if you don't want to change it",

@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   resources :lives do
     resources :bookings
   end
+
+  get "/users/show", to: "users#show"
+
+  get "/users/:id/edit", to: "users#edit"
+  patch "/users/:id", to: "users#update"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

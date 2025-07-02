@@ -1,8 +1,8 @@
 <h1>Profile details</h1>
 
-<h3>Name: <%= current_user.first_name.capitalize %></h3>
-<h3>Surname: <%= current_user.last_name.capitalize %></h3>
-<h3>Email: <%= current_user.email %></h3>
-<h3>Host: <%= current_user.is_host %></h3>
+<h3 class="text-white" >Name: <%= current_user.first_name.capitalize %></h3>
+<h3 class="text-white">Surname: <%= current_user.last_name.capitalize %></h3>
+<h3 class="text-white">Email: <%= current_user.email %></h3>
+<h3 class="text-white">Host: <%= current_user.is_host %></h3>
 
-<%= link_to "Edit details", edit_profile_settings_path, class: "btn btn-warning" %>
+<%= link_to "Edit details", edit_user_registration_path, class: "btn btn-warning" %>
