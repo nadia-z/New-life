@@ -11,8 +11,9 @@
         }
       } %>
     <% end %>
+  <p>Create more lives: </p>
   <%else %>
     <p>You haven't created a life yet! Become a host! </p>
-      <%= link_to "Create a Life!", new_life_path, class: "btn btn-primary", style: "text-decoration: none; color: inherit;"%>
   <% end %>
+    <%= link_to "Create a Life!", new_life_path, class: "btn btn-primary", style: "text-decoration: none; color: inherit;"%>
 </div>

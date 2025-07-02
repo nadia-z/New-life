@@ -4,7 +4,8 @@
   <div class="card form-container">
     <%= simple_form_for(@life) do |f| %>
 	    <%= f.input :title %>
-      <%= f.input :description %>
+      <%= f.input :description_short %>
+      <%= f.input :description_long %>
       <%= f.input :address %>
       <%= f.input :price_per_day %>
 	    <%= f.submit %>

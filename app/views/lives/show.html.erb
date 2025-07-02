@@ -7,12 +7,15 @@
       <p><%= @life.description_long %></p>
       <p><%= "€ #{@life.price_per_day}" %></p>
       <p>Status: <%= @life.status %></p>
+       <% if current_user&.is_host %>
+        <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
+      <% end %>
     </div>
   </div>
 
   <div>
     <h3 class="lives-show">Want to explore this life?</h3>
-    <div class="booking-form">
+    <div class="form-container">
       <%= simple_form_for([@life, @booking]) do |f| %>
         <%= f.input :start_date, as: :date %>
         <%= f.input :end_date, as: :date %>

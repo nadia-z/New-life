@@ -3,10 +3,20 @@
   border-radius: 15px;
   box-shadow: 8px 8px 10px 1px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  border: 1px solid rgb(202, 202, 202);
-  width: 25%;
+  background-color: $dark-blue;
+  margin-top: 3rem;
 }
 
+.form-select.is-valid {
+  border-color: $blue;
+}
 .edit-form {
-  width: 35%;
+  width: 50%;
+}
+
+.form-container form input,
+.form-container form textarea,
+.form-control form text,
+.form-container form select {
+  color: $black;
 }

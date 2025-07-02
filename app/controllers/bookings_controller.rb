@@ -33,13 +33,16 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
+    if @booking.update(booking_params)
     redirect_to life_booking_path(@life, @booking)
+  else
+    render :edit, status: :unprocessable_entity
+  end
   end
 
   def destroy
     @booking.destroy
-    redirect_to life_bookings_path(@life, @booking), status: :see_other
+    redirect_to life_bookings_path(@life), status: :see_other
   end
 
   private
