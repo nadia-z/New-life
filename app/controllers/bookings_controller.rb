@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new()
   end
 
-  def show
+  def show #adding instance variables for booking information
+
   end
 
   def create

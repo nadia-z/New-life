@@ -4,6 +4,8 @@
 @import "config/bootstrap_variables";
 @import "variables";
 
+
+
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
@@ -12,9 +14,19 @@
 @import "components/index";
 @import "pages/index";
 
-body{
+body {
   background-color: black;
 }
+
 h1 {
   color: #ffffff;
+}
+
+//eitan| bg classes for footer color
+.bg-footer {
+  background-color: $footer-blue;
+}
+
+.bg-footer-dark {
+  background-color: $footer-dark-blue;
 }

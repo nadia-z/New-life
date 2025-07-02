@@ -31,7 +31,7 @@ class LivesController < ApplicationController
   def update
     life = Life.find(params[:id])
     life.title = params[:title]
-    life.description = params[:description]
+    life.description_long = params[:description]
     life.address = params[:address]
     life.price_per_day = params[:price_per_day]
     life.status = params[:status]
