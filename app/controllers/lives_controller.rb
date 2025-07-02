@@ -18,10 +18,9 @@ class LivesController < ApplicationController
     @life = Life.new(life_params)
     @life.user = current_user
     if @life.save
-      # Set current_user as host if not already
+      redirect_to life_path(@life), notice: "Life created successfully."
       unless current_user.is_host
       current_user.update(is_host: true)
-      redirect_to life_path(@life)
       end
     else
       render :new, status: :unprocessable_entity
@@ -32,14 +31,14 @@ class LivesController < ApplicationController
     @life = Life.find(params[:id])
   end
 
-def update
-  @life = Life.find(params[:id])
-  if @life.update(life_params)
-    redirect_to life_path(@life), notice: "Life updated successfully."
-  else
-    render :edit, status: :unprocessable_entity
+  def update
+    @life = Life.find(params[:id])
+    if @life.update(life_params)
+      redirect_to life_path(@life), notice: "Life updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
-end
 
   def destroy
     @life = Life.find(params[:id])
