@@ -10,8 +10,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to life_booking_path(@life, @booking)
+    if @user.update(user_params)
+      redirect_to users_show_path, notice: 'Profile updated successfully!'
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :encrypted_password)
+    params.require(:user).permit(:first_name, :last_name, :email, :encrypted_password, :avatar)
   end
 
 end

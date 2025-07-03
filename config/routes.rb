@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   end
 
   get "/users/show", to: "users#show"
-
-  get "/users/:id/edit", to: "users#edit"
-  patch "/users/:id", to: "users#update"
+  patch "/users/show", to: "users#update"
 
   get '/bookings', to: 'bookings#index', as: 'bookings'
   get '/bookings/:id', to: 'bookings#show', as: 'booking'
