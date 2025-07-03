@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/users/:id/edit", to: "users#edit"
   patch "/users/:id", to: "users#update"
 
+  get '/bookings', to: 'bookings#index', as: 'bookings'
+  get '/bookings/:id', to: 'bookings#show', as: 'booking'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

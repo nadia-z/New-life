@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
- before_action :set_life
+  before_action :set_life, except: [:index]
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
   def index
     @bookings = Booking.where(user_id: current_user.id)
   end
@@ -10,6 +11,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    # Don't override @life if it's already set by set_life
+    @booking = @life.bookings.find(params[:id])
   end
 
   def create
@@ -46,7 +49,8 @@ class BookingsController < ApplicationController
   end
 
   private
-def set_life
+
+  def set_life
     @life = Life.find(params[:life_id])
   end
 
