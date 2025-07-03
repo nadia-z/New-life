@@ -1,16 +1,18 @@
-<h1>Profile details</h1>
+ <div class="d-flex flex-column justify-content-center align-items-center">
+  <h1>Profile details</h1>
 
-<% if current_user.avatar.attached? %>
-  <%= cl_image_tag current_user.avatar.key, gravity: "faces", height: 300, width: 400, crop: :fill %>
-<% else %>
-  <div class="placeholder-avatar" style="width: 400px; height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-    <i class="fa-duotone fa-solid fa-user-astronaut" style="font-size: 100px; color: #ccc;"></i>
-  </div>
-<% end %>
+  <% if current_user.avatar.attached? %>
+    <%= cl_image_tag current_user.avatar.key, gravity: "faces", height: 300, width: 400, crop: :fill, class: "p-2 m-5" %>
+  <% else %>
+    <div class="placeholder-avatar" style="width: 400px; height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+      <i class="fa-duotone fa-solid fa-user-astronaut" style="font-size: 100px; color: #ccc;"></i>
+    </div>
+  <% end %>
 
-<h3 class="text-white" >Name: <%= current_user.first_name.capitalize %></h3>
-<h3 class="text-white">Surname: <%= current_user.last_name.capitalize %></h3>
-<h3 class="text-white">Email: <%= current_user.email %></h3>
-<h3 class="text-white">Host: <%= current_user.is_host %></h3>
+  <h3 class="text-white m-2" >Name: <%= current_user.first_name.capitalize %></h3>
+  <h3 class="text-white m-2">Surname: <%= current_user.last_name.capitalize %></h3>
+  <h3 class="text-white m-2">Email: <%= current_user.email %></h3>
+  <h3 class="text-white m-2 mb-4">Host: <%= current_user.is_host %></h3>
 
-<%= link_to "Edit details", edit_user_registration_path, class: "btn btn-warning" %>
+  <%= link_to "Edit details", edit_user_registration_path, class: "btn btn-warning mt-4" %>
+</div>
