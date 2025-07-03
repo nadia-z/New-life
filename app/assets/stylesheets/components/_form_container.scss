@@ -14,9 +14,9 @@
   width: 50%;
 }
 
-.form-container form input,
-.form-container form textarea,
-.form-control form text,
-.form-container form select {
+.form-container input,
+.form-container textarea,
+.form-container select,
+.form-container .form-control {
   color: $black;
 }
