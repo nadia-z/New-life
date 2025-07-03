@@ -32,14 +32,14 @@ class LivesController < ApplicationController
     @life = Life.find(params[:id])
   end
 
-def update
-  @life = Life.find(params[:id])
-  if @life.update(life_params)
-    redirect_to life_path(@life), notice: "Life updated successfully."
-  else
-    render :edit, status: :unprocessable_entity
+  def update
+    @life = Life.find(params[:id])
+    if @life.update(life_params)
+      redirect_to life_path(@life), notice: "Life updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
-end
 
   def destroy
     @life = Life.find(params[:id])
