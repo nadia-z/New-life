@@ -1,5 +1,6 @@
-<h1 class="mb-5">Looking forward to your next experience? These are your bookings</h1>
-
+<h1 class="m-5">Looking forward to your next experience?</h1>
+<h5 class="m-5">Your bookings</h5>
+<div class="m-5">
 <div class="six-columns">
   <!-- Header row -->
   <p></p> <!-- for image column -->
@@ -17,4 +18,5 @@
     <p><%= "€ #{booking.total_price}" %></p>
     <%= link_to "Show Booking", life_booking_path(booking.life, booking), class: "btn btn-primary mt-5" %>
   <% end %>
+</div>
 </div>
