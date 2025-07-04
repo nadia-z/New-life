@@ -37,10 +37,10 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-    redirect_to life_booking_path(@life, @booking)
-  else
-    render :edit, status: :unprocessable_entity
-  end
+      redirect_to life_booking_path(@life, @booking)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
