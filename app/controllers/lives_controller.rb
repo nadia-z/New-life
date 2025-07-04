@@ -7,6 +7,7 @@ class LivesController < ApplicationController
 
   def show
     @life = Life.find(params[:id])
+    @reviews = @life.reviews
   end
 
   def new

@@ -1,14 +1,22 @@
-<h1><%= @life.title %> </h1>
+<img class="card-img-top" src="<%= @life.photo_url %>" alt="<%= @life.title %> image">
+<div class="mt-5">
+  <h3>Reviews</h3>
 
-<div class="card life-card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= @life.title %></h5>
-    <p class="card-text"><%= @life.description %></p>
-    <p class="card-text"><%= "€ #{@life.price_per_day}" %></p>
-    <p class="card-text">Status: <%= @life.status %></p>
-    <div class="btn-container">
-      <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(@life), style:"color: white; text-decoration: none;" %></div>
-    </div>
-  </div>
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <div class="card mb-3 p-3 shadow-sm">
+        <strong><%= review.user.email %></strong>
+        <span class="text-muted">rated it <%= review.rating %>/5</span>
+        <p><%= review.comment %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No reviews yet for this life.</p>
+  <% end %>
+</div>
+
+<!--countinue-->
+<div class="card-body">
+  <h5 class="card-title"><%= @life.title %></h5>
+  ...
 </div>
