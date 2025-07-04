@@ -1,3 +1,4 @@
+require 'faker'
 
 puts "Cleaning database..."
 Booking.destroy_all
