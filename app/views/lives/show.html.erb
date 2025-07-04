@@ -20,6 +20,7 @@
       </div>
     </div>
 
+<% if current_user != @life.user %>
     <div>
       <h3 class="lives-show">Want to explore this life?</h3>
       <div class="form-container">
@@ -27,10 +28,10 @@
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <div class="d-flex justify-content-between">
-          <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
+            <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

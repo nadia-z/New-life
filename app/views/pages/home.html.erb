@@ -1,6 +1,10 @@
 <div class="main-header mb-5">
   <h1>Ever wondered what it's like to live someone else's life?
   <h1>Experience it for one day.</h1>
+  <p class="m-3">With New Life, you get to spend a day living another person’s life — meeting them,
+    exploring their world, and experiencing their daily routine firsthand.
+    Discover new perspectives, create meaningful connections, and see life
+    through someone else’s eyes.</p>
 
   <%= form_tag "/search", method: :get, class: "d-flex mb-4 justify-content-center mt-3" do %>
     <%= text_field_tag :query, params[:query], placeholder: "Search for a life...", class: "form-control-lg me-2" %>
