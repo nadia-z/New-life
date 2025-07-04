@@ -3,26 +3,34 @@
     <h1><%= @life.title %></h1>
     <br>
     <div class="lives-show">
-      <%= image_tag 'Moritz_von_Nassau.png', class: 'm-5', alt: 'image' %>
-      <p><%= @life.description_long %></p>
-      <p><%= "€ #{@life.price_per_day}" %></p>
-      <p>Status: <%= @life.status %></p>
-       <% if current_user&.is_host %>
-        <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
-      <% end %>
+      <%= render 'shared/image_carousel',
+          images: @life.images,
+          carousel_id: 'lifeCarousel',
+          fallback_image: 'Moritz_von_Nassau.png',
+          height: 400,
+          width: 600,
+          crop: "fit"%>
+      <div>
+        <p><%= @life.description_long %></p>
+        <p><%= "€ #{@life.price_per_day}" %></p>
+        <p>Status: <%= @life.status %></p>
+        <% if current_user&.is_host %>
+          <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h3 class="lives-show">Want to explore this life?</h3>
-    <div class="form-container">
-      <%= simple_form_for([@life, @booking]) do |f| %>
-        <%= f.input :start_date, as: :date %>
-        <%= f.input :end_date, as: :date %>
-        <div class="d-flex justify-content-between">
+    <div>
+      <h3 class="lives-show">Want to explore this life?</h3>
+      <div class="form-container">
+        <%= simple_form_for([@life, @booking]) do |f| %>
+          <%= f.input :start_date, as: :date %>
+          <%= f.input :end_date, as: :date %>
+          <div class="d-flex justify-content-between">
           <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

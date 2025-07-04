@@ -13,9 +13,12 @@ $colors: $yellow,$light-green, $purple,$light-blue, $blue, $light-gray,$red, $gr
 }
 
 .life-card {
+  display: flex;
+  flex-direction: column;
   width: 16rem;
   border-radius: 8px;
   cursor: pointer;
+  justify-content: center;
 
   // Apply the background color cycling here
   @for $i from 1 through 20 {

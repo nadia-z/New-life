@@ -9,6 +9,7 @@
       <%= f.input :address %>
       <%= f.input :price_per_day %>
       <%= f.input :status %>
+      <%= f.input :images, as: :file, input_html: { multiple: true } %>
       <div class="d-flex justify-content-between">
         <%= f.submit "Update Life", class: "btn btn-primary" %>
        <%= link_to "Delete Life", life_path(@life),
