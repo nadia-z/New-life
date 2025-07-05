@@ -25,6 +25,10 @@ class PagesController < ApplicationController
     else
       @lives = Life.all
     end
+
+    if @lives.length < 1
+      @notice = "nothing here"
+    end
   end
 
   def about
