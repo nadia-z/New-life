@@ -1,6 +1,14 @@
 <div class="card life-card" style="width: 18rem;">
   <%= link_to life_path(life), class: "card-link", style: "text-decoration: none; color: inherit;" do %>
-    <%= image_tag 'Moritz_von_Nassau.png', class: 'card-img-top', alt: 'Card image cap' %>
+    <div class="carousel-wrapper">
+       <%= render 'shared/image_carousel',
+          images: life.images,
+          carousel_id: 'lifeCarousel',
+          fallback_image: 'Moritz_von_Nassau.png',
+          height: 250,
+          width: 250,
+          crop: "fit" %>
+    </div>
     <div class="card-body">
       <h5 class="card-title card-title--main"><%= life.title %></h5>
       <h5 class="card-title card-title--sub"><%= life.description_short %></h5>

@@ -11,8 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    # Don't override @life if it's already set by set_life
-    @booking = @life.bookings.find(params[:id])
+    @days = (@booking.end_date - @booking.start_date).to_i + 1
   end
 
   def create
@@ -37,6 +36,8 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
+      days = (@booking.end_date - @booking.start_date).to_i + 1
+      @booking.update(total_price: @life.price_per_day * days)
       redirect_to life_booking_path(@life, @booking)
     else
       render :edit, status: :unprocessable_entity
@@ -58,6 +59,6 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :total_price)
   end
 end
