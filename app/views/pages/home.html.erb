@@ -16,7 +16,7 @@
 </div>
 
 <div class="card-container">
-  <% @lives.each do |life| %>
-   <%= render "shared/life_card", life: life %>
+  <% @lives.each_with_index do |life, index| %>
+   <%= render "shared/life_card", life: life, carousel_id: index  %>
   <% end %>
 </div>

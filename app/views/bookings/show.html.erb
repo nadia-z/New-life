@@ -1,15 +1,7 @@
-<h1 class="mb-5" >Your Booking: <%= @life.title%> </h1>
+<div class="page-wrapper">
+  <h1 class="mb-5" >Your Booking: <%= @life.title%> </h1>
 
-<div class="card life-card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title"><%= @life.title %></h5>
-    <p class="card-text"><%= @life.description_long %></p>
-    <p class="card-text">Starting: <%= @booking.start_date %></p>
-    <p class="card-text">Ending: <%= @booking.end_date %></p>
-    <p class="card-text">Total price: <%= "€ #{@booking.total_price}"%></p>
-    <div class="btn-container">
-      <%= link_to "Edit", edit_life_booking_path(@life, @booking), class: "btn btn-primary" %>
-    </div>
+  <div class="card life-card" style="width: 18rem;">
+    <%= render partial: "shared/life_card_long_description", life: @life, carousel_id: "booking-#{@booking.id}" %>
   </div>
 </div>

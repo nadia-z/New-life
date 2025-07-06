@@ -2,14 +2,8 @@
 
 <div class="card-container">
   <% if @lives.count > 0 %>
-    <% @lives.each do |life| %>
-      <%= render partial: "shared/life_card", locals: {
-        life: life,
-        show_button: {
-          text: "Edit life",
-          path: edit_life_path(life)
-        }
-      } %>
+    <% @lives.each_with_index do |life, index| %>
+      <%= render partial: "shared/life_card", locals: { life: life, carousel_id: index, show_button: { text: "Edit life", path: edit_life_path(life) }} %>
     <% end %>
   <p>Create more lives: </p>
   <%else %>
