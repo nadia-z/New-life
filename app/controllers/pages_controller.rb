@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :about]
 
   def home
+    @booking = Booking.new()
     query = params[:query]
     if user_signed_in? && query
       if query.match?(/([a-z] *|\d *)/) == true #prevents sql injection
@@ -19,7 +20,6 @@ class PagesController < ApplicationController
         @warning = "only letters and numbers are accepted"
         @lives = Life.all
       end
-
     elsif user_signed_in?
       @lives = Life.where.not(user_id: current_user.id)
     else
@@ -33,5 +33,4 @@ class PagesController < ApplicationController
 
   def about
   end
-
 end

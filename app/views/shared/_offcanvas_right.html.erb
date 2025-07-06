@@ -1,0 +1,26 @@
+<button class="btn btn-primary btn-container" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight-<%= life.id %>" aria-controls="offcanvasRight-<%= life.id %>">Book life</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight-<%= life.id %>" aria-labelledby="offcanvasRightLabel-<%= life.id %>" style="width: 35%; background-color: rgb(7, 7, 7);">
+  <div class="offcanvas-header">
+    <h4 class="m-3">Select your dates and book now your experience as <%= life.title %>!!!</h4>
+  </div>
+  <div class="offcanvas-body m-3">
+    <h5><strong>Description:</strong></h5>
+    <p><%= life.description_long %></p>
+    <h6><strong>Address:</strong></h6>
+    <p><%= life.address %></p>
+    <h6><strong>Price:</strong></h6>
+    <p>€ <%= life.price_per_day %> per day</p>
+    <div class="page-wrapper">
+      <div class="form-container pb-5">
+        <%= simple_form_for([life, Booking.new], url: life_bookings_path(life), method: :post) do |f| %>
+          <%= f.input :start_date, as: :date %>
+          <%= f.input :end_date, as: :date %>
+          <div class="btn-container mb-1">
+            <%= f.submit "Create booking", class: "btn btn-primary" ,style: "border-radius: 10px; padding: 0.5rem; margin-top: 2rem" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

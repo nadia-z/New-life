@@ -1,18 +1,28 @@
 <div class="card life-card" style="width: 18rem;">
-  <%= link_to life_path(life), class: "card-link", style: "text-decoration: none; color: inherit;" do %>
-    <div class="carousel-wrapper">
-       <%= render 'shared/image_carousel',
-          images: life.images,
-          carousel_id: ,
-          fallback_image: 'Moritz_von_Nassau.png',
-          height: 250,
-          width: 250,
-          crop: "fit" %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title card-title--main"><%= life.title %></h5>
-      <h5 class="card-title card-title--sub"><%= life.description_short %></h5>
-      <p class="card-text"><%= "€ #{life.price_per_day} per day" %></p>
+  <div class="carousel-wrapper mt-4">
+    <%= render 'shared/image_carousel',
+        images: life.images,
+        carousel_id: carousel_id,
+        fallback_image: 'Moritz_von_Nassau.png',
+        height: 250,
+        width: 250,
+        crop: "fit" %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title card-title--main"><%= life.title %></h5>
+    <h5 class="card-title card-title--sub"><%= life.description_short %></h5>
+    <p class="card-text"><%= "€ #{life.price_per_day} per day" %></p>
+  </div>
+
+  <!-- Show different content based on user authentication -->
+  <% if user_signed_in? %>
+    <% if local_assigns[:offcanvas_right] && local_assigns[:offcanvas_life] %>
+      <%= render 'shared/offcanvas_right', life: local_assigns[:offcanvas_life] %>
+    <% end %>
+  <% else %>
+    <!-- Show login link instead of redirect -->
+    <div class="card-footer text-center">
+      <%= link_to "Login to Book", new_user_session_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 
