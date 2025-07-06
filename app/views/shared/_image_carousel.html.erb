@@ -1,21 +1,22 @@
 <% if images.attached? %>
-  <div id="<%= carousel_id %>" class="carousel slide" data-bs-ride="carousel">
+  <div id="<%= carousel_id %>" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="false">
+    <!-- Carousel indicators (dots) -->
+    <div class="carousel-indicators">
+      <% images.each_with_index do |image, index| %>
+        <button type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide-to="<%= index %>"
+                class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>"
+                aria-label="Slide <%= index + 1 %>"></button>
+      <% end %>
+    </div>
+
     <div class="carousel-inner">
       <% images.each_with_index do |image, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %> text-center">
-          <%= cl_image_tag image.key, class: 'rounded', height: local_assigns[:height] || 200, width: local_assigns[:width] || 300, crop: local_assigns[crop:] || :fit %>
+          <%= cl_image_tag image.key, class: 'rounded', height: local_assigns[:height] || 200, width: local_assigns[:width] || 300, crop: local_assigns[:crop] || :fit %>
         </div>
       <% end %>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 <% else %>
-  <%= image_tag 'Moritz_von_Nassau.png', class: 'card-img-top', alt: 'Card image cap' %>
+  <%= image_tag local_assigns[:fallback_image] || 'Moritz_von_Nassau.png', class: 'card-img-top rounded', alt: local_assigns[:fallback_alt] || 'Card image cap', height: local_assigns[:height] || 200, width: local_assigns[:width] || 300 %>
 <% end %>

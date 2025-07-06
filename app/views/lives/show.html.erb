@@ -1,37 +1,40 @@
-<div class="two-columns">
+<div class="d-flex flex-row gap-5 justify-content-center">
   <div>
     <h1><%= @life.title %></h1>
     <br>
-    <div class="lives-show">
-      <%= render 'shared/image_carousel',
-          images: @life.images,
-          carousel_id: 'lifeCarousel',
-          fallback_image: 'Moritz_von_Nassau.png',
-          height: 400,
-          width: 600,
-          crop: "fit"%>
-      <div>
-        <p><%= @life.description_long %></p>
-        <p><%= "€ #{@life.price_per_day}" %></p>
-        <p>Status: <%= @life.status %></p>
-        <% if current_user&.is_host %>
-          <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
-        <% end %>
+    <div class="card life-card" style="width: 18rem;">
+      <div class="carousel-wrapper mt-4">
+         <%= render 'shared/image_carousel',
+            images: @life.images,
+            carousel_id: "booking-#{@booking.id}",
+            fallback_image: 'Moritz_von_Nassau.png',
+            height: 250,
+            width: 250,
+            crop: "fit" %>
       </div>
-    </div>
+      <div class="card-body">
+        <h5 class="card-title card-title--main"><%= @life.title %></h5>
+        <h5 class="card-title card-title--sub"><%= @life.description_long %></h5>
+        <p class="card-text"><%= "€ #{@life.price_per_day} per day" %></p>
+        <p class="card-text">Status: <%= @life.status %></p>
 
-<% if current_user != @life.user %>
-    <div>
-      <h3 class="lives-show">Want to explore this life?</h3>
-      <div class="form-container">
-        <%= simple_form_for([@life, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date %>
-          <%= f.input :end_date, as: :date %>
-          <div class="d-flex justify-content-between">
-            <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
-          </div>
-        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+  <div class="align-self-center">
+    <% if current_user != @life.user %>
+      <div>
+        <h3 class="lives-show">Want to explore this life?</h3>
+        <div class="form-container mt-4">
+          <%= simple_form_for([@life, @booking]) do |f| %>
+            <%= f.input :start_date, as: :date %>
+            <%= f.input :end_date, as: :date %>
+            <div class="d-flex justify-content-between">
+              <%= f.submit "Create booking", class: "btn btn-success", style: "border-radius: 10px" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
