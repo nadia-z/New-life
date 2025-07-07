@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.life = @life
     @review.user = current_user
     if @review.save
-      redirect_to life_booking_path(@life, @booking), notice: "Review posted!"
+     redirect_to life_path(@life), notice: "Review posted!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,11 +26,13 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
   end
 
-  def check_booking_date
-    if @booking.date >= Date.today
-      redirect_to life_booking_path(@life, @booking), alert: "You can only leave a review after your booking date."
-    end
+ def check_booking_date
+  return redirect_to life_booking_path(@life, @booking), alert: "Booking not found." if @booking.nil?
+
+  if @booking.end_date >= Date.today
+    redirect_to life_booking_path(@life, @booking), alert: "You can only leave a review after your booking end date."
   end
+end
 
   def check_user_has_booking
     unless current_user.bookings.exists?(id: @booking.id)
