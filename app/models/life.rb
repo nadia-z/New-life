@@ -4,6 +4,4 @@ class Life < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_many :reviews, dependent: :destroy
-  has_many :reviews
-
 end
