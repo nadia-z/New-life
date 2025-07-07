@@ -1,7 +1,51 @@
-<img class="card-img-top" src="<%= @life.photo_url %>" alt="<%= @life.title %> image">
-<div class="mt-5">
-  <h3>Reviews</h3>
+<h1 class="ms-5"><%= @life.title %></h1>
+<br>
+<div class="lives-show mx-5">
+  <% if @life.images.attached? %>
+    <% @life.images.each do |image| %>
+      <%= image_tag image, class: "life-image" %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'Moritz_von_Nassau.png', class: "life-image" %>
+  <% end %>
+</div>
+<div class="two-columns">
+  <div>
+      <h5> Features</h5>
+      <div class="features-grid mt-3">
+        <% @life.features.each do |feature| %>
+            <p><i class="<%= feature_icon(feature) %>"></i>
+            <%= feature %></p>
+        <% end %>
+      </div>
+      <div class="mt-5">
+        <h5>Description</h5>
+        <p class="mt-3"><%= @life.description_long %></p>
+        <p class="mt-5"><%= "Price per day: € #{@life.price_per_day.to_i}" %></p>
+        <% if current_user&.is_host %>
+          <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
+        <% end %>
+      </div>
+  </div>
+    <% if current_user != @life.user %>
+  <div>
+      <h3>Want to explore this life?</h3>
+      <div class="form-container">
+        <%= simple_form_for([@life, @booking]) do |f| %>
+          <%= f.input :start_date, as: :date %>
+          <%= f.input :end_date, as: :date %>
+          <div class="d-flex justify-content-between">
+            <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <% end %>
+</div>
 
+<div class=two-columns>
+<div>
+  <h5 class="mb-3"> Reviews</h5>
   <% if @reviews.any? %>
     <% @reviews.each do |review| %>
       <div class="card mb-3 p-3 shadow-sm">
@@ -14,9 +58,4 @@
     <p>No reviews yet for this life.</p>
   <% end %>
 </div>
-
-<!--countinue-->
-<div class="card-body">
-  <h5 class="card-title"><%= @life.title %></h5>
-  ...
 </div>
