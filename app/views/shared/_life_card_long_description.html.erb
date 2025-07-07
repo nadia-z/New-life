@@ -14,7 +14,7 @@
       <p class="card-text"><%= "€ #{@life.price_per_day} per day" %></p>
       <p class="card-text">Starting: <%= @booking.start_date %></p>
       <p class="card-text">Ending: <%= @booking.end_date %></p>
-      <p class="card-text">Total price: <%= "€ #{@booking.total_price}"%></p>
+      <p class="card-text">Total price: <%= "€ #{@booking.total_price.to_i}"%></p>
     </div>
 
     <%= link_to "Edit booking", edit_life_booking_path(@life, @booking), class: "btn btn-primary m-4", style: "border-radius: 10px" %>
