@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :check_reservation, only: [:new, :create]
-  before_action :check_user_has_reservation, only: [:new, :create]
   before_action :authenticate_user!
-  before_action :set_life
+  before_action :set_life_and_booking
+  before_action :check_booking_date, only: [:new, :create]
+  before_action :check_user_has_booking, only: [:new, :create]
 
   def new
     @review = Review.new
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.life = @life
     @review.user = current_user
     if @review.save
-      redirect_to life_path(@life), notice: "Review posted!"
+      redirect_to life_booking_path(@life, @booking), notice: "Review posted!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,25 +21,24 @@ class ReviewsController < ApplicationController
 
   private
 
-  def check_reservation
-    unless current_user.reservations.exists?(life_id: @life.id)
-      redirect_to life_path(@life), alert: "You can only leave a review if you’ve booked this life."
-  end
-end
-
-
-  def set_life
+  def set_life_and_booking
     @life = Life.find(params[:life_id])
+    @booking = Booking.find(params[:booking_id])
+  end
+
+  def check_booking_date
+    if @booking.date >= Date.today
+      redirect_to life_booking_path(@life, @booking), alert: "You can only leave a review after your booking date."
+    end
+  end
+
+  def check_user_has_booking
+    unless current_user.bookings.exists?(id: @booking.id)
+      redirect_to life_booking_path(@life, @booking), alert: "You need to have this booking to leave a review."
+    end
   end
 
   def review_params
     params.require(:review).permit(:comment, :rating)
-  end
-end
-
-
-  def check_user_has_reservation
-    unless current_user.reservations.exists?(life: @life)
-    redirect_to life_path(@life), alert: "You need to reserve this life before leaving a review."
   end
 end
