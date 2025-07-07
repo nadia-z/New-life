@@ -32,8 +32,8 @@
       <h3>Want to explore this life?</h3>
       <div class="form-container">
         <%= simple_form_for([@life, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date %>
-          <%= f.input :end_date, as: :date %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: 'datepicker' }} %>
+          <%= f.input :end_date, as: :string, input_html: { data: { controller: 'datepicker' }} %>
           <div class="d-flex justify-content-between">
             <%= f.submit "Create booking", class: "btn btn-success rounded-1" %>
           </div>
