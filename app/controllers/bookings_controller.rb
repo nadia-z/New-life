@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def show
     @days = (@booking.end_date - @booking.start_date).to_i + 1
+    @review = Review.new
   end
 
   def create
