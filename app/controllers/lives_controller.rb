@@ -50,7 +50,7 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description_short, :description_long, :address, :price_per_day, :status)
+    params.require(:life).permit(:title, :description_short, :description_long, :address, :price_per_day, :status, images: [])
   end
 
   def is_host?

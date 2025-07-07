@@ -6,14 +6,18 @@
     Discover new perspectives, create meaningful connections, and see life
     through someone else’s eyes.</p>
 
-  <%= form_tag "/search", method: :get, class: "d-flex mb-4 justify-content-center mt-3" do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Search for a life...", class: "form-control-lg me-2" %>
-    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
-  <% end %>
+
+  <form class="d-flex mb-4 justify-content-center mt-3" action="/" accept-charset="UTF-8" method="get">
+    <input type="text" name="query" id="query" placeholder="Search for a life..." class="form-control-lg me-2">
+    <input type="submit" name="commit" value="Search" class="btn btn-outline-primary" data-disable-with="Search">
+</form>
+
+<h5><%= @notice %></h5>
+<%= @warning%>
 </div>
 
 <div class="card-container">
-  <% @lives.each do |life| %>
-   <%= render "shared/life_card", life: life %>
+  <% @lives.each_with_index do |life, index| %>
+   <%= render "shared/life_card", life: life, carousel_id: index  %>
   <% end %>
 </div>
