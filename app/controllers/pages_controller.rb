@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :about]
 
   def home
-    @booking = Booking.new()
     query = params[:query]
     if user_signed_in? && query
       if query.match?(/([a-z] *|\d *)/) == true #prevents sql injection
