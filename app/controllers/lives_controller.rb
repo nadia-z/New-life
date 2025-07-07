@@ -8,6 +8,7 @@ class LivesController < ApplicationController
   def show
     @life = Life.find(params[:id])
     @booking = Booking.new()
+    @reviews = @life.reviews.includes(:user).order(created_at: :desc)
   end
 
   def new

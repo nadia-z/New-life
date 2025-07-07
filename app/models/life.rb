@@ -3,4 +3,7 @@ class Life < ApplicationRecord
   has_many :users, through: :bookings
   belongs_to :user
   has_many_attached :images
+  has_many :reviews, dependent: :destroy
+  has_many :reviews
+
 end

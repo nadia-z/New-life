@@ -1,7 +1,37 @@
-<div class="page-wrapper">
+<div class="two-columns">
+  <div>
   <h1 class="mb-5" >Your Booking: <%= @life.title%> </h1>
 
   <div class="card life-card" style="width: 18rem;">
     <%= render partial: "shared/life_card_long_description", life: @life, carousel_id: "booking-#{@booking.id}" %>
   </div>
+  </div>
+  <div>
+  <% if @booking.end_date < Date.today %>
+    <h2>Leave a Review</h2>
+    <div class="review-form">
+    <%= simple_form_for([@life, @review], url: life_reviews_path(@life, booking_id: @booking.id)) do |f| %>
+      <% if @review.errors.any? %>
+        <div class="alert alert-danger">
+          <h4>
+            <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:
+          </h4>
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.input :rating, as: :select, collection: 1..5, label: "Your Rating" %>
+      <%= f.input :comment, label: "Your Comment" %>
+      <%= f.submit "Post Review", class: "btn btn-primary mt-3" %>
+    <% end %>
+  <% else %>
+    <p>You can leave a review after your booking end date.</p>
+  <% end %>
+      </div>
+
+    </div>
 </div>
