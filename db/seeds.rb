@@ -1,3 +1,4 @@
+require 'faker'
 require "open-uri"
 
 puts "Cleaning database..."
@@ -72,6 +73,49 @@ users = [{
     is_host: false},
   ]
 
+  descriptions = {
+  "Mother" => {
+    short: "A warm and nurturing experience in a cozy, family-focused environment.",
+    long: "Step into the heart of a loving home where you’ll learn patience, multitasking, and the art of unconditional care. From morning routines to bedtime stories, this life immerses you in the joys and challenges of parenthood."
+  },
+  "Lawyer" => {
+    short: "A high-pressure life filled with courtroom drama and legal strategy.",
+    long: "Navigate intense negotiations, write ironclad contracts, and argue passionately in court. This life is for those seeking intellectual rigor, ethical dilemmas, and the power of persuasion."
+  },
+  "Fireman" => {
+    short: "Adrenaline-filled days saving lives and battling flames.",
+    long: "Live the heroic life of a firefighter—respond to emergencies, rescue those in danger, and master the strength and discipline required for this noble profession. Every day is unpredictable and deeply meaningful."
+  },
+  "Police officer" => {
+    short: "Protect and serve in a community-focused, fast-paced role.",
+    long: "Experience the structure, responsibility, and split-second decision-making of a police officer. Uphold the law, de-escalate tense situations, and forge bonds with the community you serve."
+  },
+  "Teacher" => {
+    short: "Inspire young minds and shape the future of tomorrow.",
+    long: "Become a guiding light in the classroom—plan lessons, manage diverse learners, and foster creativity. Teaching is both an art and a science, filled with moments of challenge and deep fulfillment."
+  },
+  "Artist" => {
+    short: "Express emotion and creativity through visual storytelling.",
+    long: "Immerse yourself in a life of color, imagination, and free expression. Whether painting murals or curating exhibitions, you’ll explore the process of turning ideas into inspiring works of art."
+  },
+  "Father" => {
+    short: "Lead, support, and grow in the role of a modern dad.",
+    long: "Discover the rewarding routines of fatherhood—mentorship, playtime, and late-night diaper runs. This life offers a balanced blend of responsibility, humor, and unconditional love."
+  },
+  "Surgeon" => {
+    short: "Precision, pressure, and purpose in the operating room.",
+    long: "Master complex procedures, make split-second decisions, and save lives daily. This life immerses you in the intense, detail-oriented world of surgery, where every second matters."
+  },
+  "Prime minister" => {
+    short: "Lead a nation with vision, diplomacy, and decisive action.",
+    long: "Experience the weight and privilege of political leadership. Navigate parliament, address national crises, and strive for progress while balancing diplomacy and public service."
+  },
+  "Dog walker" => {
+    short: "Spend your days outdoors with furry companions.",
+    long: "Walk a variety of lovable pups through city parks and leafy neighborhoods. This life is perfect for animal lovers who enjoy fresh air, flexible schedules, and wagging tails."
+  }
+}
+
 users.each do |user|
   User.create!(user)
 end
@@ -84,8 +128,8 @@ host_users = User.where(is_host: true).to_a
 
   life = Life.create!({
     title: job_titles[count],
-    description_short: Faker::Lorem.paragraph(sentence_count: 1),
-    description_long: Faker::Lorem.paragraph(sentence_count: 4),
+    description_short: descriptions[job_titles[count]][:short],
+    description_long: descriptions[job_titles[count]][:long],
     address: Faker::Address.full_address,
     price_per_day: price_per_day,
     status: "Available",
@@ -95,7 +139,7 @@ host_users = User.where(is_host: true).to_a
   lives << life
 end
 
-puts "Linking imeges for Life models..."
+puts "Linking images for Life models..."
 
 data = {
   "Mother" => [
