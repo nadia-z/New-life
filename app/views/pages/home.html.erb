@@ -1,26 +1,22 @@
-<h1>Choose between a list of new lives</h1>
+<div class="main-header mb-5">
+  <h1>Ever wondered what it's like to live someone else's life?</h1>
+  <h1>Experience it for one day.</h1>
+  <p class="m-3">With New Life, you get to spend a day living another person's life — meeting them,
+    exploring their world, and experiencing their daily routine firsthand.
+    Discover new perspectives, create meaningful connections, and see life
+    through someone else's eyes.</p>
 
+  <form class="d-flex mb-4 justify-content-center mt-3" action="/" accept-charset="UTF-8" method="get">
+    <input type="text" name="query" id="query" placeholder="Search for a life..." class="form-control-lg me-2">
+    <input type="submit" name="commit" value="Search" class="btn btn-outline-primary" data-disable-with="Search">
+  </form>
+
+  <h5><%= @notice %></h5>
+  <%= @warning%>
+</div>
 
 <div class="card-container">
-  <% @lives.each do |life| %>
-
-  <div class="card life-card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"><%= life.title %></h5>
-      <p class="card-text"><%= life.description %></p>
-      <p class="card-text"><%= "€ #{life.price_per_day}" %></p>
-      <p class="card-text">Status: <%= life.status %></p>
-      <div class="btn-container">
-        <div class="btn btn-primary" style="border-radius: 8px; width: 30"><%= link_to "Check life", life_path(life), style:"color: white; text-decoration: none;" %></div>
-        <% if life.status == "Available" %>
-          <div class="btn btn-success" style="border-radius: 8px; width: 30"><%= link_to "Book experience", "#", style:"color: white; text-decoration: none;" %></div>
-        <% else %>
-          <div></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
+  <% @lives.each_with_index do |life, index| %>
+   <%= render "shared/life_card", life: life, carousel_id: index  %>
   <% end %>
 </div>

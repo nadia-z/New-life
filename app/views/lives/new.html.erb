@@ -1,13 +1,16 @@
-<h1>Create a new life</h1>
+<h1 style="text-align: center;">Become a host! Create a new life</h1>
 
 <div class="page-wrapper">
-  <div class="card form-container">
+  <div class="form-container edit-form" style="margin: 2rem 0;">
     <%= simple_form_for(@life) do |f| %>
 	    <%= f.input :title %>
-      <%= f.input :description %>
+      <%= f.input :description_short %>
+      <%= f.input :description_long %>
       <%= f.input :address %>
       <%= f.input :price_per_day %>
-	    <%= f.submit %>
+      <%= f.input :images, as: :file, input_html: { multiple: true } %>
+
+      <%= f.submit "Create Life", class: "btn btn-primary", style: "border-radius: 8px; width: 150px;" %>
     <% end %>
   </div>
 </div>

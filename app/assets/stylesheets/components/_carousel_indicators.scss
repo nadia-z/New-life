@@ -1,0 +1,73 @@
+/* Carousel indicators styling */
+.carousel-indicators {
+  margin-bottom: 1rem;
+
+  button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1 !important;
+    margin: 0 4px;
+    text-indent: -9999px;
+
+    &.active {
+      background: white !important;
+    }
+
+    &:hover {
+      background: #f8f9fa !important;
+      transform: scale(1.1);
+      transition: all 0.7s ease;
+    }
+
+    &::before {
+      display: none !important;
+    }
+  }
+}
+
+/* Override Bootstrap's default indicator styling */
+.carousel-indicators [data-bs-target] {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-clip: padding-box;
+  border: 0 !important;
+  border-radius: 50% !important;
+}
+
+/* Carousel container fixes */
+.carousel {
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 200px;
+  }
+
+  .carousel-item {
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  /* Fade transition */
+  &.carousel-fade .carousel-item {
+    transition: opacity 4s ease-in-out !important;
+  }
+}

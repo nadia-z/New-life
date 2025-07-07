@@ -1,0 +1,27 @@
+<div class="card life-card" style="width: 18rem;">
+    <div class="carousel-wrapper mt-4">
+       <%= render 'shared/image_carousel',
+          images: @life.images,
+          carousel_id: "booking-#{@booking.id}",
+          fallback_image: 'Moritz_von_Nassau.png',
+          height: 250,
+          width: 250,
+          crop: "fit" %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title card-title--main"><%= @life.title %></h5>
+      <h5 class="card-title card-title--sub"><%= @life.description_long %></h5>
+      <p class="card-text"><%= "€ #{@life.price_per_day} per day" %></p>
+      <p class="card-text">Starting: <%= @booking.start_date %></p>
+      <p class="card-text">Ending: <%= @booking.end_date %></p>
+      <p class="card-text">Total price: <%= "€ #{@booking.total_price.to_i}"%></p>
+    </div>
+
+    <%= link_to "Edit booking", edit_life_booking_path(@life, @booking), class: "btn btn-primary m-4", style: "border-radius: 10px" %>
+
+  <% if local_assigns[:show_button] %>
+    <div class="card-footer text-center">
+      <%= link_to show_button[:text], show_button[:path], class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

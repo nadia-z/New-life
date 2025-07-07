@@ -1,0 +1,19 @@
+.lives-show {
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.lives-show {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns of equal width */
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.life-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}

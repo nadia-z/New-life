@@ -8,6 +8,7 @@ class LivesController < ApplicationController
   def show
     @life = Life.find(params[:id])
     @reviews = @life.reviews
+    @booking = Booking.new()
   end
 
   def new
@@ -18,7 +19,10 @@ class LivesController < ApplicationController
     @life = Life.new(life_params)
     @life.user = current_user
     if @life.save
-      redirect_to life_path(@life)
+      redirect_to life_path(@life), notice: "Life created successfully."
+      unless current_user.is_host
+      current_user.update(is_host: true)
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,21 +33,17 @@ class LivesController < ApplicationController
   end
 
   def update
-    life = Life.find(params[:id])
-    life.title = params[:title]
-    life.description = params[:description]
-    life.address = params[:address]
-    life.price_per_day = params[:price_per_day]
-    life.status = params[:status]
-    life.save
-
-
-    redirect_to life_path(params[:id])
+    @life = Life.find(params[:id])
+    if @life.update(life_params)
+      redirect_to life_path(@life), notice: "Life updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    life = Life.find(params[:id])
-    life.destroy
+    @life = Life.find(params[:id])
+    @life.destroy
 
     redirect_to lives_path
   end
@@ -51,7 +51,7 @@ class LivesController < ApplicationController
   private
 
   def life_params
-    params.require(:life).permit(:title, :description, :address, :price_per_day, :status)
+    params.require(:life).permit(:title, :description_short, :description_long, :address, :price_per_day, :status, images: [])
   end
 
   def is_host?

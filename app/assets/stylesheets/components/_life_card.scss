@@ -1,3 +1,34 @@
+@import "../variables";
+$colors: $yellow,$light-green, $purple,$light-blue, $blue, $light-gray,$red, $gray, $light-pink;
+.card-text {
+  color: $black;
+}
+
+.card-link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+  margin: 0.2rem;
+}
+
 .life-card {
-  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+  border-radius: 8px;
+  cursor: pointer;
+  justify-content: center;
+
+  // Apply the background color cycling here
+  @for $i from 1 through 20 {
+    $color-index: ($i % length($colors));
+    @if $color-index == 0 {
+      $color-index: length($colors);
+    }
+
+    &:nth-child(#{$i}) {
+      background: nth($colors, $color-index);
+    }
+  }
 }
