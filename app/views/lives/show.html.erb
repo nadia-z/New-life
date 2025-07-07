@@ -57,3 +57,21 @@
   <% end %>
 </div>
 </div>
+
+<div class=two-columns>
+<div>
+  <h5 class="mb-3"> Reviews</h5>
+
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <div class="mb-3">
+        <strong><%= review.user.email %></strong>
+        <p class="mt-3">Rating <%= review.rating %>/5</p>
+        <p><%= review.comment %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No reviews yet for this life.</p>
+  <% end %>
+</div>
+</div>
