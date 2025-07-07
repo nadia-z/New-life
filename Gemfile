@@ -6,7 +6,6 @@ gem "open-uri"
 
 gem "devise"
 
-gem "dotenv-rails"
 
 gem "cloudinary"
 

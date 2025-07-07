@@ -96,7 +96,7 @@ host_users = User.where(is_host: true).to_a
   lives << life
 end
 
-puts "Linking imeges for Life models..."
+puts "Linking images for Life models..."
 
 data = {
   "Mother" => [
