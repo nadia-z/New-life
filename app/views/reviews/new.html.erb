@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow p-4">
+        <h1 class="mb-4">Leave a Review for <%= @life.title %></h1>
+
+        <%= simple_form_for([@life, @review]) do |f| %>
+          <% if @review.errors.any? %>
+            <div class="alert alert-danger">
+              <h4>
+                <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:
+              </h4>
+              <ul>
+                <% @review.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%= f.input :rating, as: :select, collection: 1..5, label: "Your Rating" %>
+          <%= f.input :comment, label: "Your Comment" %>
+          <%= f.submit "Post Review", class: "btn btn-primary mt-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

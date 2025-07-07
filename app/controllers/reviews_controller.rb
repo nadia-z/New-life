@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
   end
 
 
+
   def check_user_has_booking
     unless current_user.bookings.exists?(id: @booking.id)
       redirect_to life_booking_path(@life, @booking), alert: "You need to have this booking to leave a review."

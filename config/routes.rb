@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :lives do
     resources :bookings
+      resources :reviews, only: [:new, :create]
+
   end
 
   get "/users/show", to: "users#show"
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
 
   get '/bookings', to: 'bookings#index', as: 'bookings'
   get '/bookings/:id', to: 'bookings#show', as: 'booking'
-
 
   get "up" => "rails/health#show", as: :rails_health_check
 
