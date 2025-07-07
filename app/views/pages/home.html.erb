@@ -17,10 +17,6 @@
 
 <div class="card-container">
   <% @lives.each_with_index do |life, index| %>
-   <%= render "shared/life_card",
-        life: life,
-        carousel_id: "home-#{index}",
-        offcanvas_right: true,
-        offcanvas_life: life %>
+   <%= render "shared/life_card", life: life, carousel_id: index  %>
   <% end %>
 </div>
