@@ -75,7 +75,7 @@ users = [{
 
   descriptions = {
   "Mother" => {
-    short: "A warm and nurturing experience in a cozy, family-focused environment.",
+    short: "A warm experience in a cozy, family-focused environment.",
     long: "Step into the heart of a loving home where you’ll learn patience, multitasking, and the art of unconditional care. From morning routines to bedtime stories, this life immerses you in the joys and challenges of parenthood."
   },
   "Lawyer" => {
@@ -116,6 +116,19 @@ users = [{
   }
 }
 
+features = {
+  "Mother" => ["Homemade meals", "Bedtime storytelling", "Laundry tutorials", "School drop-offs", "Grocery runs"],
+  "Lawyer" => ["Mock court session", "Case file reviews", "Legal writing crash course", "Office attire provided", "Espresso on tap"],
+  "Fireman" => ["Hose training", "Firetruck ride-along", "Rescue drill", "Uniform fitting", "Firehouse meal"],
+  "Police officer" => ["Patrol simulation", "Community policing", "Crisis roleplay", "Siren driving experience", "Walkie-talkie etiquette"],
+  "Teacher" => ["Lesson planning", "Grading papers", "Parent-teacher meeting roleplay", "Classroom management", "Whiteboard access"],
+  "Artist" => ["Studio access", "Painting session", "Gallery walk", "Sketchbook provided", "Creative feedback loop"],
+  "Father" => ["School run simulation", "Saturday breakfast", "Park playtime", "Life advice hour", "DIY projects"],
+  "Surgeon" => ["Scrub-in experience", "Surgical simulation", "Medical lingo training", "Anatomy crash course", "Shift meal break"],
+  "Prime minister" => ["Policy debate", "Press conference roleplay", "Cabinet briefing", "Historic speech study", "Power lunch"],
+  "Dog walker" => ["Morning dog walk", "Treat pouch", "Dog park visit", "Breed education", "Puppy playtime"]
+}
+
 users.each do |user|
   User.create!(user)
 end
@@ -132,6 +145,7 @@ host_users = User.where(is_host: true).to_a
     description_long: descriptions[job_titles[count]][:long],
     address: Faker::Address.full_address,
     price_per_day: price_per_day,
+    features: features[job_titles[count]],
     status: "Available",
     user_id: host_users[count % host_users.length].id,
   })

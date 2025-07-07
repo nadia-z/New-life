@@ -15,7 +15,7 @@
     <h5><%= booking.life.title %></h5>
     <p><%= booking.start_date %></p>
     <p><%= booking.end_date %></p>
-    <p><%= "€ #{booking.total_price}" %></p>
+    <p><%= "€ #{booking.total_price.to_i}" %></p>
     <%= link_to "Show Booking", life_booking_path(booking.life, booking), class: "btn btn-primary mt-5" %>
   <% end %>
 </div>
