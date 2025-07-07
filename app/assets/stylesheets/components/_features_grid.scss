@@ -1,0 +1,15 @@
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  grid-template-rows: repeat(3, auto); /* three rows */
+  gap: 0.5rem 2rem; /* row gap and column gap */
+}
+
+/* Make sure only 5 items are there (3 left, 2 right) */
+/* if you have more, adjust accordingly */
+.features-grid p:nth-child(4) {
+  grid-row: 2; /* 4th item starts at second row */
+}
+.features-grid p:nth-child(5) {
+  grid-row: 3; /* 5th item starts at third row */
+}
