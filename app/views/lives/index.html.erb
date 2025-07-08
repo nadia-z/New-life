@@ -1,13 +1,13 @@
-<h1>Live experiences you offer</h1>
-
-<div class="card-container">
+<div class="m-4">
+  <h1 class="mb-4">Live experiences you offer</h1>
+  <%= link_to "Create a new Life!", new_life_path, class: "btn btn-primary", style: "text-decoration: none; color: inherit;"%>
+</div>
+<div class="card-container ms-2">
   <% if @lives.count > 0 %>
     <% @lives.each_with_index do |life, index| %>
       <%= render partial: "shared/life_card", locals: { life: life, carousel_id: index, show_button: { text: "Edit life", path: edit_life_path(life) }} %>
     <% end %>
-  <p>Create more lives: </p>
   <%else %>
     <p>You haven't created a life yet! Become a host! </p>
   <% end %>
-    <%= link_to "Create a Life!", new_life_path, class: "btn btn-primary", style: "text-decoration: none; color: inherit;"%>
 </div>
