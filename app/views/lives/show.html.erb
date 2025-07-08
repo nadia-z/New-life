@@ -23,7 +23,7 @@
         <h5>Description</h5>
         <p class="mt-3"><%= @life.description_long %></p>
         <p class="mt-5"><%= "Price per day: € #{@life.price_per_day.to_i}" %></p>
-        <% if current_user&.is_host %>
+        <% if current_user == @life.user %>
           <%= link_to "Edit Life", edit_life_path(@life), class: "btn btn-primary mt-3" %>
         <% end %>
       </div>
