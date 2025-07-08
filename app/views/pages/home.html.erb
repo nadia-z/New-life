@@ -1,22 +1,37 @@
-<div class="main-header mb-5">
-  <h1>Ever wondered what it's like to live someone else's life?</h1>
-  <h1>Experience it for one day.</h1>
-  <p class="m-3">With New Life, you get to spend a day living another person's life — meeting them,
-    exploring their world, and experiencing their daily routine firsthand.
-    Discover new perspectives, create meaningful connections, and see life
-    through someone else's eyes.</p>
+<div class="page-wrapper-scroll">
+  <section>
+    <div class="main-header">
+      <h1>Ever wondered what it's like to live someone else's life?</h1>
+      <h1 style="margin-bottom: 2rem;">Experience it for one day.</h1>
+      <p class="m-4">With New Life, you get to spend a day living another person's life — meeting them,
+        exploring their world, and experiencing their daily routine firsthand.
+        Discover new perspectives, create meaningful connections, and see life
+        through someone else's eyes.</p>
 
-  <form class="d-flex mb-4 justify-content-center mt-3" action="/" accept-charset="UTF-8" method="get">
-    <input type="text" name="query" id="query" placeholder="Search for a life..." class="form-control-lg me-2">
-    <input type="submit" name="commit" value="Search" class="btn btn-outline-primary" data-disable-with="Search">
-  </form>
+      <form class="d-flex mb-5 justify-content-center mt-3" action="/" accept-charset="UTF-8" method="get">
+        <input type="text" name="query" id="query" placeholder="Search for a life..." class="form-control-lg me-2">
+        <input type="submit" name="commit" value="Search" class="btn btn-outline-primary" data-disable-with="Search">
+      </form>
 
-  <h5><%= @notice %></h5>
-  <%= @warning%>
-</div>
-
-<div class="card-container">
-  <% @lives.each_with_index do |life, index| %>
-   <%= render "shared/life_card", life: life, carousel_id: index  %>
-  <% end %>
+      <h5><%= @notice %></h5>
+      <%= @warning%>
+      <h5 style="margin-bottom: 2rem; margin-top: 1rem;">Suggested for you...</h5>
+      <div class="card-container" style="gap: 2rem;">
+        <% @lives.sample(3).each_with_index do |life, index| %>
+          <%= render "shared/life_card", life: life, carousel_id: index  %>
+        <% end %>
+        <h3 class="mt-5">...or scroll-down to explore all of the available life experiences</h3>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="main-lower">
+      <h3 style="text-align: center; margin-top: 2rem; margin-bottom: 3rem;">Live your dream life, book now your next great experience...</h3>
+      <div class="card-container" style="margin-bottom: 12rem;">
+        <% @lives.each_with_index do |life, index| %>
+          <%= render "shared/life_card", life: life, carousel_id: index  %>
+        <% end %>
+      </div>
+    </div>
+  </section>
 </div>

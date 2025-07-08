@@ -14,8 +14,8 @@
     <div class="page-wrapper">
       <div class="form-container pb-5">
         <%= simple_form_for([life, Booking.new], url: life_bookings_path(life), method: :post) do |f| %>
-          <%= f.input :start_date, as: :date %>
-          <%= f.input :end_date, as: :date %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: 'datepicker' }}  %>
+          <%= f.input :end_date, as: :string, input_html: { data: { controller: 'datepicker' }}  %>
           <div class="btn-container mb-1">
             <%= f.submit "Create booking", class: "btn btn-primary" ,style: "border-radius: 10px; padding: 0.5rem; margin-top: 2rem" %>
           </div>

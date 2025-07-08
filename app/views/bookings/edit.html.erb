@@ -3,8 +3,8 @@
 <div class="page-wrapper ">
   <div class="card form-container edit-form">
     <%= simple_form_for([@life, @booking]) do |f| %>
-	    <%= f.input :start_date, as: :date %>
-      <%= f.input :end_date, as: :date %>
+	    <%= f.input :start_date, as: :string, input_html: { data: { controller: 'datepicker' }} %>
+      <%= f.input :end_date,  as: :string, input_html: { data: { controller: 'datepicker' }} %>
       <%= f.submit "Update booking", class: "btn btn-warning", style: "border-radius: 8px; width: 150px;" %>
       <div class="d-flex justify-content-between">
       <%= link_to "Delete booking", life_booking_path(@life, @booking),

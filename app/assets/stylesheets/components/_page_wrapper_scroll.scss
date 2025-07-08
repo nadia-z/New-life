@@ -1,0 +1,11 @@
+.page-wrapper-scroll {
+  scroll-snap-type: y mandatory;
+  height: 100vh; /* Container must have a defined height */
+  overflow-y: scroll; /* Container must have overflow */
+}
+
+/* Add this to make sections snap */
+.page-wrapper-scroll > section {
+  scroll-snap-align: start;
+  height: 100vh; /* Each section should be at least viewport height */
+}
