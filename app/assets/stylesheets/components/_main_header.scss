@@ -1,7 +1,10 @@
 .main-header{
-  padding: 0 10rem 0 10rem;
+  padding: 3rem 5rem 3rem 5rem;
   text-align: center;
   justify-content: center;
+  background-color: $dark-blue;
+  border-radius: 10px;
+  margin-top: 0.5rem;
 }
 .form-control-lg{
   width: 600px;
