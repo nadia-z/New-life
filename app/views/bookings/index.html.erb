@@ -9,14 +9,20 @@
   <h5>End date</h5>
   <h5>Total price</h5>
   <p></p> <!-- for edit button -->
-
   <% @bookings.each do |booking| %>
-    <%= image_tag 'Moritz_von_Nassau.png', alt: 'image', width: '100' %>
+  <% life = booking.life %>
+  <div class="ms-5">
+    <% if life&.images&.attached? %>
+      <%= image_tag life.images.first, class: "small-image" %>
+    <% else %>
+      <%= image_tag 'Moritz_von_Nassau.png', class: "small-image" %>
+    <% end %>
+    </div>
     <h5><%= booking.life.title %></h5>
-    <p><%= booking.start_date %></p>
-    <p><%= booking.end_date %></p>
-    <p><%= "€ #{booking.total_price.to_i}" %></p>
-    <%= link_to "Show Booking", life_booking_path(booking.life, booking), class: "btn btn-primary mt-5" %>
+    <div><%= booking.start_date %></div>
+    <div><%= booking.end_date %></div>
+    <div><%= "€ #{booking.total_price.to_i}" %></div>
+    <%= link_to "Show Booking", life_booking_path(booking.life, booking), class: "btn btn-primary mb-5 me-5" %>
   <% end %>
 </div>
 </div>
