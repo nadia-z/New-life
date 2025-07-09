@@ -99,7 +99,7 @@ users = [{
     long: "Immerse yourself in a life of color, imagination, and free expression. Whether painting murals or curating exhibitions, you’ll explore the process of turning ideas into inspiring works of art."
   },
   "Father" => {
-    short: "Lead, support, and grow in the role of a modern dad.",
+    short: "Play, lead, cook, support and grow in the role of a modern dad.",
     long: "Discover the rewarding routines of fatherhood—mentorship, playtime, and late-night diaper runs. This life offers a balanced blend of responsibility, humor, and unconditional love."
   },
   "Surgeon" => {
@@ -111,7 +111,7 @@ users = [{
     long: "Experience the weight and privilege of political leadership. Navigate parliament, address national crises, and strive for progress while balancing diplomacy and public service."
   },
   "Dog walker" => {
-    short: "Spend your days outdoors with furry companions.",
+    short: "Spend your days outdoors playing with furry companions.",
     long: "Walk a variety of lovable pups through city parks and leafy neighborhoods. This life is perfect for animal lovers who enjoy fresh air, flexible schedules, and wagging tails."
   }
 }
