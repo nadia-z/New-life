@@ -24,3 +24,17 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+.card-container-suggested {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1600px;
+  gap: 0.5rem;
+  margin-bottom: 10rem;
+  width: 100%;
+}
